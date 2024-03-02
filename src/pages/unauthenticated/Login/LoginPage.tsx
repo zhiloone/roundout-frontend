@@ -2,7 +2,6 @@ import { TextInput, Button, PasswordInput, Text, Paper, Space, Flex } from '@man
 import { Link } from 'react-router-dom';
 import { UnauthenticatedScaffold } from '@/components/UnauthenticatedScaffold/UnauthenticatedScaffold';
 import { useLoginController } from './login.controller';
-import { ROUTE_PATH } from '@/router';
 
 export const LoginPage = () => {
   const { loginForm, handleLogin, isLoading } = useLoginController();
@@ -29,7 +28,7 @@ export const LoginPage = () => {
 
           <Flex justify="flex-end">
             <Text size="xs">
-              <Link to={ROUTE_PATH.FORGOT_PASSWORD}>Esqueceu sua senha?</Link>
+              <Link to="/forgot-password">Esqueceu sua senha?</Link>
             </Text>
           </Flex>
 

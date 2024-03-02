@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from '@mantine/core';
+import { Flex, FlexProps, Space, Text } from '@mantine/core';
 
 interface UnauthenticatedScaffoldProps extends FlexProps {}
 
@@ -11,11 +11,23 @@ export const UnauthenticatedScaffold = ({
     w = 'full',
     justify = 'center',
     align = 'center',
+    direction = 'column',
     ...remainingFlexProps
   } = flexProps;
 
   return (
-    <Flex mih={mih} w={w} justify={justify} align={align} {...remainingFlexProps}>
+    <Flex
+      mih={mih}
+      w={w}
+      direction={direction}
+      justify={justify}
+      align={align}
+      {...remainingFlexProps}
+    >
+      <Text size="xl" fw="bold">
+        RoundOut
+      </Text>
+      <Space h="sm" />
       {children}
     </Flex>
   );
