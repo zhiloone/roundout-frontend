@@ -1,9 +1,10 @@
 import { Flex, FlexProps, Space, Text } from '@mantine/core';
+import { Outlet } from 'react-router-dom';
 
 interface UnauthenticatedScaffoldProps extends FlexProps {}
 
 export const UnauthenticatedScaffold = ({
-  children,
+  children: _,
   ...flexProps
 }: UnauthenticatedScaffoldProps) => {
   const {
@@ -28,7 +29,7 @@ export const UnauthenticatedScaffold = ({
         RoundOut
       </Text>
       <Space h="sm" />
-      {children}
+      <Outlet />
     </Flex>
   );
 };

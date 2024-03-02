@@ -6,11 +6,14 @@ import { initializeApp } from 'firebase/app';
 import { Router } from './router';
 import { theme } from './theme';
 import firebaseConfig from '../roundout-web-firebase-config.json';
+import { useHandleLoggedInUser } from './hooks/useHandleLoggedInUser';
 
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
 export default function App() {
+  useHandleLoggedInUser();
+
   return (
     <MantineProvider theme={theme} forceColorScheme="light">
       <Notifications />

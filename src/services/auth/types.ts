@@ -12,3 +12,5 @@ export interface LoginResponse {
 export type RegisterParams = LoginParams;
 
 export type RegisterResponse = LoginResponse;
+
+export type ResetPasswordParams = Pick<LoginParams, 'email'>;

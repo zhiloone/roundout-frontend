@@ -1,3 +1,3 @@
 export enum StoreName {
-  AUTH = 'auth',
+  FIREBASE = 'firebase',
 }
