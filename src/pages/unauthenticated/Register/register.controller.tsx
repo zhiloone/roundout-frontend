@@ -1,23 +1,27 @@
-import { useState } from 'react';
+import { useDisclosure } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { getAuth } from 'firebase/auth';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthService } from '@/services/auth/auth.service';
 import { useAuthentication } from '@/store';
-import { useLoginForm } from './login.form';
-import { Icon } from '@/components/Icon/Icon';
+import { AuthService } from '@/services/auth/auth.service';
 import { ROUTE_PATH } from '@/router';
+import { Icon } from '@/components/Icon/Icon';
+import { useRegisterForm } from './register.form';
 
-export const useLoginController = () => {
-  const loginForm = useLoginForm();
-  const authStore = useAuthentication();
+export const useRegisterController = () => {
+  const registerForm = useRegisterForm();
+  const [isPasswordVisible, { toggle: togglePasswordVisibility }] = useDisclosure(false);
   const [isLoading, setIsLoading] = useState(false);
+  const authStore = useAuthentication();
   const navigate = useNavigate();
 
-  const handleLogin = loginForm.onSubmit(async (values) => {
+  const handleRegister = registerForm.onSubmit(async (values) => {
     setIsLoading(true);
     try {
-      const { user } = await AuthService.login(values);
+      const { confirmPassword, ...registerParams } = values;
+
+      const { user } = await AuthService.register(registerParams);
       authStore.setUser(user);
 
       const firebaseToken = await getAuth().currentUser!.getIdToken(true);
@@ -25,7 +29,7 @@ export const useLoginController = () => {
 
       notifications.show({
         title: 'Sucesso',
-        message: 'Autenticado com sucesso! Redirecionando...',
+        message: 'Conta cadastrada com sucesso! Redirecionando...',
         color: 'green',
         icon: <Icon name="check" />,
       });
@@ -44,8 +48,10 @@ export const useLoginController = () => {
   });
 
   return {
-    loginForm,
-    handleLogin,
+    registerForm,
+    handleRegister,
+    isPasswordVisible,
+    togglePasswordVisibility,
     isLoading,
   };
 };

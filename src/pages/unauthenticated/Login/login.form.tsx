@@ -10,8 +10,8 @@ const loginSchema = z.object({
 export const useLoginForm = () => {
   const form = useForm({
     initialValues: {
-      email: 'email@domain.com',
-      password: 'Pa$sw0rd',
+      email: '',
+      password: '',
     },
     validate: zodResolver(loginSchema),
   });

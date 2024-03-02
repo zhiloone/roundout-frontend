@@ -6,24 +6,21 @@ export class AuthService {
   static BASE_PATH = 'auth';
 
   static async login(params: LoginParams) {
-    // Pega um custom token gerado pelo backend
     const loginResponse = await api.post<LoginResponse>(`${this.BASE_PATH}/login`, params);
     const { customToken, user } = loginResponse.data;
 
-    // Utiliza o custom token p/ se autenticar com o firebase
     await signInWithCustomToken(getAuth(), customToken);
 
     return { user };
   }
 
   static async register(params: RegisterParams) {
-    const { data } = await api.post<RegisterResponse>(`${this.BASE_PATH}/register`, params);
-    console.log({ data });
+    const registerResponse = await api.post<RegisterResponse>(`${this.BASE_PATH}/register`, params);
+    const { customToken, user } = registerResponse.data;
 
-    const res = await signInWithCustomToken(getAuth(), data.customToken);
-    console.log({ res });
+    await signInWithCustomToken(getAuth(), customToken);
 
-    return data;
+    return { user };
   }
 
   // static async recoverPassword(body: PasswordRecoveryBody) {

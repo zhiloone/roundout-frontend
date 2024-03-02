@@ -11,6 +11,14 @@ export const LoginPage = () => {
     <UnauthenticatedScaffold>
       <Paper p="xl" shadow="xl" withBorder>
         <form onSubmit={handleLogin}>
+          <Flex justify="center">
+            <Text size="xl" fw="bold">
+              Entre com sua conta
+            </Text>
+          </Flex>
+
+          <Space h="sm" />
+
           <TextInput
             label="Email"
             placeholder="Insira seu email"
