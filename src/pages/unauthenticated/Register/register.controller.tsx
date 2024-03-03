@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthService } from '@/services/auth/auth.service';
 import { Icon } from '@/components/Icon/Icon';
 import { useRegisterForm } from './register.form';
-import { ROUTE_PATH } from '@/router/router.consts';
+import { ROUTE_PATH } from '@/router/routes/authenticated.routes';
 
 export const useRegisterController = () => {
   const registerForm = useRegisterForm();

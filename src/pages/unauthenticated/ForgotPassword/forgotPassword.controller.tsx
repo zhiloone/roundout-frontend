@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Icon } from '@/components/Icon/Icon';
 import { useForgotPasswordForm } from './forgotPassword.form';
 import { AuthService } from '@/services/auth/auth.service';
-import { ROUTE_PATH } from '@/router/router.consts';
+import { UNAUTHENTICATED_ROUTE_PATH } from '@/router/routes/unauthenticated.routes';
 
 export const useForgotPasswordController = () => {
   const forgotPasswordForm = useForgotPasswordForm();
@@ -25,7 +25,7 @@ export const useForgotPasswordController = () => {
         icon: <Icon name="check" />,
       });
 
-      navigate(ROUTE_PATH.LOGIN);
+      navigate(UNAUTHENTICATED_ROUTE_PATH.LOGIN);
     } catch (error: any) {
       notifications.show({
         title: 'Erro',

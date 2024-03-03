@@ -1,7 +1,7 @@
 import { TextInput, Button, PasswordInput, Text, Paper, Space, Flex } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { useLoginController } from './login.controller';
-import { ROUTE_PATH } from '@/router/router.consts';
+import { UNAUTHENTICATED_ROUTE_PATH } from '@/router/routes/unauthenticated.routes';
 
 export const LoginPage = () => {
   const { loginForm, handleLogin, isLoading } = useLoginController();
@@ -35,7 +35,7 @@ export const LoginPage = () => {
 
         <Flex justify="flex-end">
           <Text size="xs">
-            <Link to={ROUTE_PATH.FORGOT_PASSWORD}>Esqueceu sua senha?</Link>
+            <Link to={UNAUTHENTICATED_ROUTE_PATH.FORGOT_PASSWORD}>Esqueceu sua senha?</Link>
           </Text>
         </Flex>
 
@@ -49,7 +49,7 @@ export const LoginPage = () => {
 
         <Flex justify="center">
           <Text size="xs">
-            Não tem uma conta? <Link to={ROUTE_PATH.REGISTER}>Cadastrar-se</Link>
+            Não tem uma conta? <Link to={UNAUTHENTICATED_ROUTE_PATH.REGISTER}>Cadastrar-se</Link>
           </Text>
         </Flex>
       </form>

@@ -1,8 +1,9 @@
-import { Outlet } from 'react-router-dom';
-import { AppShell, Group, Burger } from '@mantine/core';
+import { NavLink, Outlet } from 'react-router-dom';
+import { AppShell, Group, Burger, Button, Space } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { getAuth } from 'firebase/auth';
 import { PrivateRoute } from '../PrivateRoute';
-import { Test } from './test';
+import { ROUTE_PATH } from '@/router/routes/authenticated.routes';
 
 // TODO: sidebar, etc
 export const AuthenticatedScaffold = () => {
@@ -22,7 +23,22 @@ export const AuthenticatedScaffold = () => {
         </AppShell.Header>
 
         <AppShell.Navbar p="md">
-          <Test />
+          <AppShell.Section grow>
+            <NavLink to={ROUTE_PATH.HOME}>Home</NavLink>
+            <Space h="xs" />
+            <NavLink to={ROUTE_PATH.TABLE}>Table</NavLink>
+          </AppShell.Section>
+
+          <AppShell.Section>
+            <Button
+              w="100%"
+              onClick={() => {
+                getAuth().signOut();
+              }}
+            >
+              Logout
+            </Button>
+          </AppShell.Section>
         </AppShell.Navbar>
 
         <AppShell.Main>

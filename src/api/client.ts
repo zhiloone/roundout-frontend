@@ -17,5 +17,7 @@ api.interceptors.request.use(async (config) => {
     (config.headers as AxiosHeaders).set('Authorization', `Bearer ${firebaseToken}`);
   }
 
+  (config.headers as AxiosHeaders).set('Access-Control-Allow-Origin', '*');
+
   return config;
 });

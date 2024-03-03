@@ -1,7 +1,7 @@
 import { Paper, Text, TextInput, Space, PasswordInput, Flex, Button } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { useRegisterController } from './register.controller';
-import { ROUTE_PATH } from '@/router/router.consts';
+import { UNAUTHENTICATED_ROUTE_PATH } from '@/router/routes/unauthenticated.routes';
 
 export const RegisterPage = () => {
   const { registerForm, handleRegister, isPasswordVisible, togglePasswordVisibility, isLoading } =
@@ -54,7 +54,7 @@ export const RegisterPage = () => {
 
         <Flex justify="center">
           <Text size="xs">
-            Tem uma conta? <Link to={ROUTE_PATH.LOGIN}>Entrar</Link>
+            Tem uma conta? <Link to={UNAUTHENTICATED_ROUTE_PATH.LOGIN}>Entrar</Link>
           </Text>
         </Flex>
       </form>

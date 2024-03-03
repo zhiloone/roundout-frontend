@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthService } from '@/services/auth/auth.service';
 import { useLoginForm } from './login.form';
 import { Icon } from '@/components/Icon/Icon';
-import { ROUTE_PATH } from '@/router/router.consts';
+import { ROUTE_PATH } from '@/router/routes/authenticated.routes';
 
 export const useLoginController = () => {
   const loginForm = useLoginForm();
